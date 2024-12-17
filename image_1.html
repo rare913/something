@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive Navbar and Slider</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Something</a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" id="offcanvasNavbar" tabindex="-1"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Something</h5>
+                    <button type="button" class="btn-close text-reset shadow-none border-0" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        .navbar {
+            background-color: #ffffff;
+        }
+
+        .navbar .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            margin: 0 10px;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .offcanvas-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .offcanvas-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .offcanvas-body {
+            padding-top: 1rem;
+        }
+    </style>
+
+    <div class="gallery container">
+        <h1 class="text-center">Photo Gallery</h1>
+        <div class="row">
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./japan-background-digital-art (1).jpg" alt="A beautiful digital art of Japan"
+                    onclick="openModal(0)">
+                <div class="description" style="display: none;">A beautiful digital art of Japan</div>
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./japan-background-digital-art.jpg" alt="Stunning Japanese landscape" onclick="openModal(1)">
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./light-yagami-5k-8k-7680x4320-10500.png" alt="Light Yagami in high resolution"
+                    onclick="openModal(2)">
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./light-yagami-black-5120x2880-10499.jpg" alt="Dark-themed Light Yagami artwork"
+                    onclick="openModal(3)">
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./japan-background-digital-art (1).jpg" alt="A beautiful digital art of Japan"
+                    onclick="openModal(0)">
+                <div class="description" style="display: none;">A beautiful digital art of Japan</div>
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./japan-background-digital-art.jpg" alt="Stunning Japanese landscape" onclick="openModal(1)">
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./light-yagami-5k-8k-7680x4320-10500.png" alt="Light Yagami in high resolution"
+                    onclick="openModal(2)">
+            </div>
+            <div class="col col-6 col-s-6 col-md-3">
+                <img src="./light-yagami-black-5120x2880-10499.jpg" alt="Dark-themed Light Yagami artwork"
+                    onclick="openModal(3)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <button class="next" onclick="changeImage(1)"> &#10095;</button>
+    </div>
+
+    <style>
+        .gallery {
+            margin: 5% auto;
+        }
+
+        /* Gallery Grid */
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .gallery .col {
+            margin: 1% auto;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+        }
+
+        .modal-content {
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            animation: zoomIn 0.3s ease-out;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-weight: bold;
+            font-size: 36px;
+            padding: 16px;
+            cursor: pointer;
+            border: none;
+            z-index: 1001;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #caption {
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* Media Queries for Better Responsiveness */
+        @media (max-width: 768px) {
+
+            .prev,
+            .next {
+                font-size: 30px;
+                padding: 12px;
+            }
+
+            .gallery img {
+                height: 150px;
+            }
+
+            .gallery .col {
+                margin: 2% auto;
+            }
+
+            .modal-content {
+                margin-top: 50%;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                width: 100%;
+                height: auto;
+            }
+
+            .prev,
+            .next {
+                font-size: 24px;
+                padding: 8px;
+            }
+
+            #caption {
+                font-size: 16px;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script>
+        const images = [
+            { src: "./japan-background-digital-art (1).jpg", alt: "A beautiful digital art of Japan" },
+            { src: "./japan-background-digital-art.jpg", alt: "Stunning Japanese landscape" },
+            { src: "./light-yagami-5k-8k-7680x4320-10500.png", alt: "Light Yagami in high resolution" },
+            { src: "./light-yagami-black-5120x2880-10499.jpg", alt: "Dark-themed Light Yagami artwork" }
+        ];
+
+        let currentIndex = 0;
+
+        function openModal(index) {
+            currentIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const caption = document.getElementById('caption');
+
+            modal.style.display = "block";
+            modalImg.src = images[currentIndex].src;
+            caption.textContent = images[currentIndex].alt;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            openModal(currentIndex);
+        }
+    </script>
+
+
+
+
+
+    <footer style="background-color: #2c3e50; color: #ecf0f1; padding: 40px 20px; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+            <!-- About Section -->
+            <div style="flex: 1 1 300px; margin-bottom: 20px; padding-right: 20px;">
+                <h3>About Us</h3>
+                <p>
+                    [Website Name] is your trusted source for the latest political news, analysis, and opinions.
+                    We are committed to delivering unbiased reporting and fostering informed discussions.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div style="flex: 1 1 200px; margin-bottom: 20px;">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="/about" style="color: #ecf0f1; text-decoration: none;">About</a></li>
+                    <li><a href="/contact" style="color: #ecf0f1; text-decoration: none;">Contact Us</a></li>
+                    <li><a href="/privacy" style="color: #ecf0f1; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="/terms" style="color: #ecf0f1; text-decoration: none;">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div style="flex: 1 1 300px; margin-bottom: 20px;">
+                <h3>Stay Informed</h3>
+                <p>Subscribe to our newsletter for the latest updates.</p>
+                <form>
+                    <input type="email" placeholder="Enter your email"
+                        style="padding: 10px; width: 80%; max-width: 250px; margin-bottom: 10px; border: none; border-radius: 4px;">
+                    <button type="submit"
+                        style="padding: 10px 20px; background-color: #3498db; color: #ecf0f1; border: none; border-radius: 4px; cursor: pointer;">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div style="flex: 1 1 200px; margin-bottom: 20px;">
+                <h3>Follow Us</h3>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://facebook.com" target="_blank"
+                        style="color: #ecf0f1; text-decoration: none;">Facebook</a>
+                    <a href="https://twitter.com" target="_blank"
+                        style="color: #ecf0f1; text-decoration: none;">Twitter</a>
+                    <a href="https://instagram.com" target="_blank"
+                        style="color: #ecf0f1; text-decoration: none;">Instagram</a>
+                    <a href="https://youtube.com" target="_blank"
+                        style="color: #ecf0f1; text-decoration: none;">YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div style="text-align: center; margin-top: 20px; border-top: 1px solid #34495e; padding-top: 20px;">
+            <p>&copy; 2024 [Website Name]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
